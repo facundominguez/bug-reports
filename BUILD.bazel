@@ -1,0 +1,19 @@
+load(
+  "@rules_haskell//haskell:defs.bzl",
+  "haskell_binary",
+  "haskell_toolchain_library",
+)
+
+haskell_toolchain_library(name = "base")
+
+haskell_binary(
+    name = "main",
+    srcs = ['Main.hs'],
+    deps = [
+        "base",
+        "@maven//:org_apache_commons_commons_collections4_4_1",
+    ],
+    data = [
+        "@maven//:org_apache_commons_commons_collections4_4_1",
+    ],
+)
